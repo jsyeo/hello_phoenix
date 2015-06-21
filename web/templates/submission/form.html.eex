@@ -1,0 +1,28 @@
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div id="editor">def fib(n):
+  if n == 0 or n == 1:
+    return 1
+  else:
+    return fib(n - 2) + fib(n - 1)
+print(fib(10))
+      </div>
+    </div>
+  </div>
+
+  <div id="result">
+    <pre>
+    </pre>
+  </div>
+
+  <button type="submit" class="btn btn-default" id="runBtn">Run</button>
+
+<!--
+<%# form_for @conn, @action, [name: :submission], fn f -> %>
+  <%# textarea f, :code %>
+  <div class="form-group">
+    <%# submit "Run", class: "btn btn-default" %>
+  </div>
+<%# end %>
+</div>
+-->

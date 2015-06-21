@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello Phoenix!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <div class="container" role="main">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+        </ul>
+        <span class="logo"></span>
+      </div>
+
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+      <%= @inner %>
+
+      <div class="footer">
+        <hr />
+        <a href="<%= page_path(@conn, :index) %>">Home</a>
+      </div>
+    </div> <!-- /container -->
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script>require("web/static/js/app")</script>
+    <script>
+      function init() {
+        var editor = ace.edit("editor");
+        var textarea = $('textarea[name="submission[code]"]').hide();
+        editor.setTheme('ace/theme/monokai');
+        editor.getSession().setMode('ace/mode/python');
+        var updateTextarea = function() {
+          textarea.val(editor.getSession().getValue());
+        };
+        editor.getSession().on('change', updateTextarea);
+        $('form').on('submit', updateTextarea);
+      }
+      $( () => init() );
+    </script>
+  </body>
+</html>
